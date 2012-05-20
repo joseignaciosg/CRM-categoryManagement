@@ -10,6 +10,7 @@ class Pages extends CI_Controller {
 		}
 		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
+		$data['user_username'] = null;
 // 		$data['todo'] = array('clean house', 'eat lunch', 'call mom');
 		
 		
