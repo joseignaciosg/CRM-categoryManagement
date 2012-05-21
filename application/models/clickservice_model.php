@@ -1,0 +1,85 @@
+<?php
+
+class Clickservice_model extends CI_Model {
+
+	var $id; // id in database
+    var $receiver; // user and mail in database
+    var $date; // date in database
+    var $newsletter; // newsletter in database
+    var $campaign = '';
+    var $user; // company in database
+    var $message = ''; //message in database
+    
+
+    function __construct(){
+        parent::__construct();
+    }
+    
+    function get_click_entries($company, $type, $page, $jump){
+    	$sql ="SELECT user, mail, DATE, name, campaign, companies.nombre, image_click.id, message
+    						FROM image_click, newsletters, companies
+    						WHERE image_click.newsletter = newsletters.newsletter_id
+    						AND image_click.company = companies.id
+    						AND companies.id = ? 
+    						AND image_click.type = ?
+    						ORDER BY DATE DESC LIMIT ? , ?";
+    	$this->db->query($sql, array($company, $type, $page, $jump));
+    	
+    	$ans = $query->result();
+    	$fila = mysql_fetch_array($ans);
+    	while ( $fila = mysql_fetch_array($ans) ){
+    		$data[$i][0] = $fila[0]; //names
+    		$data[$i][1] = $fila[1]; //mails
+    		$data[$i][2] = strtotime($fila[2]);/*date - converting from mysql to php time*/
+    		$data[$i][3] = $fila[3]; //newsletters
+    		$data[$i][4] = $fila[4]; // campaigns
+    		$data[$i][5] = $fila[5]; //companies
+    		$data[$i][6] = $fila[7]; //messages
+    		$data[$i][7] = $fila[6]; // ids
+    		$i++;
+    	}
+    	return data;
+    }
+    
+    
+    function get_clicks( $offset, $limit){
+   		return $this->db->get('image_click',  $limit, $offset);
+	}
+	
+	function get_openings( $offset, $limit){
+		//should detect the id of the current user(company)
+		$sqltxt = "SELECT user, mail, DATE, name, campaign, companies.nombre
+									FROM image_click, newsletters, companies
+									WHERE image_click.newsletter = newsletters.newsletter_id
+									AND image_click.company = companies.id
+									AND companies.id = ? 
+									AND image_click.type = ?
+									ORDER BY DATE DESC LIMIT ? , ?";
+		return $this->db->query($sqltxt, array(1,1,intval($offset),$limit));
+	}
+	
+	function get_all_openings(){
+		//should detect the id of the current user(company)
+		return $this->db->get_where('image_click', array('type' => 1, 'company' =>1));
+	}
+	
+	function get_link_clicks( $offset, $limit){
+		//should detect the id of the current user(company)
+		$sqltxt = "SELECT user, mail, DATE, name, campaign, companies.nombre
+							FROM image_click, newsletters, companies
+							WHERE image_click.newsletter = newsletters.newsletter_id
+							AND image_click.company = companies.id
+							AND companies.id = ? 
+							AND image_click.type = ?
+							ORDER BY DATE DESC LIMIT ? , ?";
+		return $this->db->query($sqltxt, array(1,2,intval($offset),$limit));
+	}
+	
+	function get_all_link_clicks(){
+		//should detect the id of the current user(company)
+		return $this->db->get_where('image_click', array('type' => 2, 'company' =>1));
+	}
+	
+}
+
+?>

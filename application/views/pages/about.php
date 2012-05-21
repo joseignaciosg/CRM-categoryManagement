@@ -1,2 +1,20 @@
 
-<h1><?php echo 'Hallo Welt'; ?></h1>
+
+
+<h2>Acerca de la herramieta de CRM</h2>
+
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>

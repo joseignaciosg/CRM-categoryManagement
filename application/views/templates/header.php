@@ -9,13 +9,17 @@
 <meta name="author" content="">
 
 <!-- Le styles -->
-<link href="../../assets/css/bootstrap.css" rel="stylesheet">
+<?php  
+echo '<link href="'.base_url().'/assets/css/bootstrap.css" rel="stylesheet">';
+?>
 <style type="text/css">
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
 }
 </style>
+<!-- Google charts initialization-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 </head>
 
@@ -27,10 +31,24 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Category Management CRM</a>
+				</a> <a class="brand" href="../pages/home">Category Management CRM</a>
 				<div class="nav-collapse">
 					<ul class="nav pull-right">
-						<?php if( $user_username == null):?>
+					
+						<?php if( isset($this->session) && ($this->session != null) && ($this->session->userdata('logged_in') == TRUE)):?>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown"> <?=$this->session->userdata('username')?> <b
+									class="caret"></b></a>
+								<ul class="dropdown-menu ">
+									<li><a href="../user/viewer"> Visor de Clicks</a>
+									</li>
+									<li><a href="#"> Auditor </a>
+									</li>
+									<li><a href="../user/logout"> Salir </a>
+									</li>
+								</ul>
+							</li>
+						<?php else:?>
 							<li>
 								<form class="navbar-form pull-right span7" action="../user/login"
 									method="POST">
@@ -43,17 +61,6 @@ body {
 											class="btn btn-primary" value="Entrar" />
 									</div>
 								</form>
-							</li>
-						<?php else:?>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown"> <?=$user_username?> <b
-									class="caret"></b></a>
-								<ul class="dropdown-menu ">
-									<li><a href="#"> About</a>
-									</li>
-									<li><a href="../pages/home"> Salir </a>
-									</li>
-								</ul>
 							</li>
 						<?php endif;?>
 							
