@@ -1,6 +1,10 @@
+<?php $this->load->view('/clickviewer/panel');?>
 
-
-<script type="text/javascript">
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -15,25 +19,32 @@
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('string', 'Campañas');
+        data.addColumn('number', 'Cantidad de clicks');
         data.addRows([
-          ['Campaña 1', 3],
-          ['Campaña 2', 1],
-          ['Campaña 3', 1],
-          ['Campaña 4', 1],
-          ['Campaña 5', 2]
+		<?php
+		      foreach ( $results->result() as $row)
+		    {
+					echo "['$row->name', $row->count],";
+			  }
+		?>
         ]);
 
         // Set chart options
         var options = {'title':'Clicks por campaña',
-                       'width':600,
-                       'height':500};
+                       'width':500,
+                       'height':400};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-</script>
+    </script>
+  </head>
 
-<div id="chart_div"></div>
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
+<?php $this->load->view('/clickviewer/panelend');?>

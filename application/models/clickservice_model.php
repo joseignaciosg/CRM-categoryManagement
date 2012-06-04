@@ -80,6 +80,22 @@ class Clickservice_model extends CI_Model {
 		return $this->db->get_where('image_click', array('type' => 2, 'company' =>1));
 	}
 	
+	function get_quant_clicks_for_each_newsletter( $companyid){
+		$query ="SELECT newsletters.name as name, COUNT(image_click.user) as count
+									FROM image_click, newsletters 
+									WHERE newsletter = newsletter_id 
+									AND image_click.company = ? 
+									GROUP BY newsletters.name";
+		return $this->db->query($query, array($companyid));
+	}
+	
+	function get_quant_clicks_for_each_campaign( $companyid){
+		$query ="SELECT campaign as name, COUNT(user) as count
+					FROM  image_click
+					WHERE company = ?
+					GROUP BY campaign";
+		return $this->db->query($query, array($companyid));
+	}
 }
 
 ?>

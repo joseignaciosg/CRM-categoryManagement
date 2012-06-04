@@ -126,8 +126,10 @@ class Clickviewer extends CI_Controller {
 		}
 		$data['title'] = ucfirst($page);
 		$data['page'] = $page;
+		$company_id =1;
+		$data['results'] = $this->clickservice_model->get_quant_clicks_for_each_newsletter($company_id);
 		$this->load->view('templates/header', $data);
-		$this->load->view('clickviewer/panel', $data);
+		$this->load->view('clickviewer/newslettergraph', $data);
 		$this->load->view('templates/footer', $data);
 	}
 	
@@ -137,8 +139,10 @@ class Clickviewer extends CI_Controller {
 		}
 		$data['title'] = ucfirst($page);
 		$data['page'] = $page;
+		$company_id =1;
+		$data['results'] = $this->clickservice_model->get_quant_clicks_for_each_campaign($company_id);
 		$this->load->view('templates/header', $data);
-		$this->load->view('clickviewer/panel', $data);
+		$this->load->view('clickviewer/campaigngraph', $data);
 		$this->load->view('templates/footer', $data);
 	}
 	

@@ -50,8 +50,11 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
+// $db['default']['username'] = 'category';
 $db['default']['password'] = '';
+// $db['default']['password'] = '4975_pirata_MORGAN';
 $db['default']['database'] = 'new';
+// $db['default']['database'] = 'category_new';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
