@@ -96,6 +96,16 @@ class Clickservice_model extends CI_Model {
 					GROUP BY campaign";
 		return $this->db->query($query, array($companyid));
 	}
+
+	function get_all_click_data($companyid){
+		$query = "SELECT user, mail, DATE as date, name, campaign, companies.nombre as companyname
+									FROM image_click, newsletters, companies
+									WHERE image_click.newsletter = newsletters.newsletter_id
+									AND image_click.company = companies.id
+									AND companies.id = ? 
+									ORDER BY DATE DESC";
+		return $this->db->query($query, array($companyid));
+	}
 }
 
 ?>

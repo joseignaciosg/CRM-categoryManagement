@@ -5,7 +5,8 @@ class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url'));
-// 		$this->load->library('session');
+ 		$this->load->model('clickservice_model'); 
+		// 		$this->load->library('session');
 	}
 	
 
@@ -15,11 +16,11 @@ class User extends CI_Controller {
 		$data['user_password'] = $_POST["user_password"];
 		
 		//TODO connection to DB
-		if($data['user_username'] != 'jose' || $data['user_password'] != 'jose' ){
-			if ($data['user_username'] != 'jose'){
+		if($data['user_username'] != 'category' || $data['user_password'] != 'category' ){
+			if ($data['user_username'] != 'category'){
 				$data['errors'] = 'Nombre de Usuario Inválido';
 			}
-			if($data['user_password'] != 'jose'){
+			if($data['user_password'] != 'category'){
 				$data['errors'] = 'Contraseña Inválida';
 			} 
 		}else{
@@ -51,6 +52,25 @@ class User extends CI_Controller {
 		redirect('/clickviewer/openings');
 	}
 	
+	public function downloadAllClicks($page = 'downloadallclicks'){
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: private",false);
+		header("Content-type: application/force-download");
+		header("Content-Disposition: attachment; filename=\"".basename("clicks.csv")."\";" );
+		header("Content-Transfer-Encoding: binary");
+		$fp = fopen('clicks.csv','w');
+		$results = $this->clickservice_model->get_all_click_data($company_id);
+		foreach($results as $row ){
+			$nextline = $row->user . ',' . $row->mail . ',' . date("d/m/y",strtotime($row->date))
+			. ',' . date("H:i:s",strtotime($row->date)) .',' . $row->name .',' . $row->campaign . "\r\n";
+			fwrite($fp,$nextline);
+		}
+		fclose($fp);
+		header("Content-Length: ".filesize("clicks.csv"));
+		readfile("clicks.csv");
+	}
 }
 
 ?>

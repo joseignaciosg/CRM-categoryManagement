@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +43,9 @@ body {
 								<ul class="dropdown-menu ">
 									<li><a href="../user/viewer"> Visor de Clicks</a>
 									</li>
-									<li><a href="#"> Auditor </a>
+<!-- 									<li><a href="http://www.categorymg.com/CM-auditor/" target="_blank" > Auditor </a> -->
+										<li><a href="../auditor/front" > Auditor </a>
+									
 									</li>
 									<li><a href="../user/logout"> Salir </a>
 									</li>
