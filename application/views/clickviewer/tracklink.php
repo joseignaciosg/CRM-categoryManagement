@@ -5,11 +5,12 @@
             <label class="control-label" for="select01">Elegir Newsletter</label>
             <div class="controls">
               <select id="select01">
-                <option>newsletter 1</option>
-                <option>newsletter 2</option>
-                <option>newsletter 3</option>
-                <option>newsletter 4</option>
-                <option>newsletter 5</option>
+              <?php
+	              foreach ( $results->result() as $row)
+			      {
+   					echo "<option value=\"$row->newsletter_id\">$row->name</option>";
+				  }
+              ?>
               </select>
             </div>
             <div class="controls">
@@ -17,9 +18,9 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="input01">Nombre de Campaña</label>
+            <label class="control-label" for="campaign_name">Nombre de Campaña</label>
             <div class="controls">
-              <input type="text" class="input-xlarge" id="input01">
+              <input type="text" class="input-xlarge" id="campaign_name">
               <p class="help-block">Introduzca aquí el nombre que quiere que tenga su campaña.</p>
             </div>
           </div>
@@ -34,14 +35,29 @@
 	      <h3>Su link Es:</h3>
 	      </div>
 	      <div class="modal-body">
-	      <h4>link</h4>
+	      <h4 id="linktext">
+			</h4>
 	      
 	      <div class="modal-footer">
-	      <a href="#" class="btn" data-dismiss="modal">Close</a>
-	      <a href="#" class="btn btn-primary">Save changes</a>
+	      <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
 	      </div>
       </div>
-      
+      </div>
+
+<script>
+	$("#genlink").click(function() {
+		options = new Object();
+		var company = 1;
+		var newsletter = $("select#select01 option:selected").val();
+		var campaigname = $("#campaign_name").val();
+		var link ='&lt;img src="http://www.categorymanagement.com.ar/'
+						+'images-nl/imagetrack2.php?name=#name#&mail=#e-mail#&news='+newsletter+'&campaign='
+						+campaigname+'&company='+company+'" /&gt';
+		$("#linktext").empty();				
+		$("#linktext").html(link);
+		$('#myModal').modal(options);
+	});
+</script>
       
       
       

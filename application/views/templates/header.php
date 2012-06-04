@@ -11,6 +11,8 @@
 <!-- Le styles -->
 <?php  
 echo '<link href="'.base_url().'/assets/css/bootstrap.css" rel="stylesheet">';
+echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>';
+
 ?>
 <style type="text/css">
 body {

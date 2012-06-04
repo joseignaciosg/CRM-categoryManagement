@@ -2,9 +2,13 @@
 
 class Clickviewer extends CI_Controller {
 	
+	//extract this from a configuration file
+	var $company_id =1;
+	
 	function __construct(){
 		parent::__construct();
  		$this->load->model('clickservice_model'); 
+ 		$this->load->model('newsletterservice_model');
  		$this->load->database();
  		$this->load->helper(array('url'));
  		$this->load->library('table');
@@ -110,6 +114,7 @@ class Clickviewer extends CI_Controller {
 		}
 		$data['title'] = ucfirst($page);
 		$data['page'] = $page;
+		$data['results'] = $this->newsletterservice_model->get_news_form_company(1); //here should be company id
 		$this->load->view('templates/header', $data);
 		$this->load->view('clickviewer/tracklink', $data);
 		$this->load->view('templates/footer', $data);
