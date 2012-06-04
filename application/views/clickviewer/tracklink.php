@@ -24,28 +24,28 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Generar link</button>
+         	 <button type="button" class="btn btn-primary" id="genlink">Generate Link</button>
           </div>
         </fieldset>
       </form>
       <div id="myModal" class="modal hide fade" style="display: none; ">
 	      <div class="modal-header">
 	      <button class="close" data-dismiss="modal">×</button>
-	      <h3>Modal Heading</h3>
+	      <h3>Su link Es:</h3>
 	      </div>
 	      <div class="modal-body">
-	      <h4>Popover in a modal</h4>
-	      <p>This <a href="#" class="btn popover-test" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">button</a> should trigger a popover on hover.</p>
+	      <h4>link</h4>
 	      
-	      <h4>Tooltips in a modal</h4>
-	      <p><a href="#" class="tooltip-test" data-original-title="Tooltip">This link</a> and <a href="#" class="tooltip-test" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
-	      
-	      </div>
 	      <div class="modal-footer">
 	      <a href="#" class="btn" data-dismiss="modal">Close</a>
 	      <a href="#" class="btn btn-primary">Save changes</a>
 	      </div>
       </div>
-      <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
+      
+      
+      
+      
+      
+      
 <?php $this->load->view('/clickviewer/panelend');?>
  
