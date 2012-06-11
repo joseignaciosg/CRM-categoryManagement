@@ -9,7 +9,7 @@
 				<?php  
 					echo '<a href="'.base_url().'index.php/auditor/help">Ayuda</a></li>';
 				?>
-<li class="nav-header">Opciones</li>
+				<li class="nav-header">Opciones</li>
 				<li <?php if($page == "activelist"){echo 'class="active"';}?>>
 				<?php  
 					echo '<a href="'.base_url().'index.php/auditor/activelist">Lista Activa de Envío</a></li>';

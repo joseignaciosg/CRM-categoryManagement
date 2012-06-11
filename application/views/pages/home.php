@@ -19,7 +19,11 @@
 
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
-	<h1>Category Management Inc. CRM</h1>
+	<?php if( isset($this->session) && ($this->session != null) && ($this->session->userdata('logged_in') == TRUE)):?>
+		<h1><?php echo $this->session->userdata('companyname');?> CRM</h1>
+	<?php else:?>
+		<h1>Category Management Inc. CRM</h1>
+	<?php endif;?>
 	<p></p>
 	<p>
 		<a class="btn btn-primary btn-large" href="../pages/about">Acerca de la herramienta&raquo;</a>

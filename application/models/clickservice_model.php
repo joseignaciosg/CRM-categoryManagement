@@ -47,7 +47,7 @@ class Clickservice_model extends CI_Model {
 	}
 	
 	function get_openings( $offset, $limit){
-		//should detect the id of the current user(company)
+		$company = $this->session->userdata('company_id');
 		$sqltxt = "SELECT user, mail, DATE, name, campaign, companies.nombre
 									FROM image_click, newsletters, companies
 									WHERE image_click.newsletter = newsletters.newsletter_id
@@ -55,29 +55,29 @@ class Clickservice_model extends CI_Model {
 									AND companies.id = ? 
 									AND image_click.type = ?
 									ORDER BY DATE DESC LIMIT ? , ?";
-		return $this->db->query($sqltxt, array(1,1,intval($offset),$limit));
+		return $this->db->query($sqltxt, array($company,1,intval($offset),$limit));
 	}
 	
 	function get_all_openings(){
-		//should detect the id of the current user(company)
-		return $this->db->get_where('image_click', array('type' => 1, 'company' =>1));
+		$company = $this->session->userdata('company_id');
+		return $this->db->get_where('image_click', array('type' => 1, 'company' =>$company));
 	}
 	
 	function get_link_clicks( $offset, $limit){
-		//should detect the id of the current user(company)
-		$sqltxt = "SELECT user, mail, DATE, name, campaign, companies.nombre
+		$company = $this->session->userdata('company_id');
+		$sqltxt = "SELECT user, mail, DATE, name, campaign, message
 							FROM image_click, newsletters, companies
 							WHERE image_click.newsletter = newsletters.newsletter_id
 							AND image_click.company = companies.id
 							AND companies.id = ? 
 							AND image_click.type = ?
 							ORDER BY DATE DESC LIMIT ? , ?";
-		return $this->db->query($sqltxt, array(1,2,intval($offset),$limit));
+		return $this->db->query($sqltxt, array($company,2,intval($offset),$limit));
 	}
 	
 	function get_all_link_clicks(){
-		//should detect the id of the current user(company)
-		return $this->db->get_where('image_click', array('type' => 2, 'company' =>1));
+		$company = $this->session->userdata('company_id');
+		return $this->db->get_where('image_click', array('type' => 2, 'company' =>$company));
 	}
 	
 	function get_quant_clicks_for_each_newsletter( $companyid){
@@ -106,6 +106,18 @@ class Clickservice_model extends CI_Model {
 									ORDER BY DATE DESC";
 		return $this->db->query($query, array($companyid));
 	}
+	
+	function get_all_type_click_data($companyid, $clicktype){
+		$query = "SELECT user, mail, DATE as date, name, campaign, companies.nombre as companyname
+										FROM image_click, newsletters, companies
+										WHERE image_click.newsletter = newsletters.newsletter_id
+										AND image_click.company = companies.id
+										AND companies.id = ? 
+										AND type = ?
+										ORDER BY DATE DESC";
+		return $this->db->query($query, array($companyid, $clicktype));
+	}
+	
 }
 
 ?>

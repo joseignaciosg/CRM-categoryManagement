@@ -12,6 +12,10 @@
 				  }
               ?>
               </select>
+              <?php
+	              echo "<input id=\"companyid\" type=\"hidden\" value=\"$company\" />";
+              ?>
+              
             </div>
             <div class="controls">
               <p class="help-block">Elija aquí el newsletter que desea enviar en esta campaña.</p>
@@ -47,7 +51,7 @@
 <script>
 	$("#genlink").click(function() {
 		options = new Object();
-		var company = 1;
+		var company = $("#companyid").val();
 		var newsletter = $("select#select01 option:selected").val();
 		var campaigname = $("#campaign_name").val();
 		var link ='&lt;img src="http://www.categorymanagement.com.ar/'

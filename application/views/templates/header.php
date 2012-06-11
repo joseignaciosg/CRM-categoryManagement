@@ -32,7 +32,11 @@ body {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="../pages/home">Category Management CRM</a>
+				<?php if( isset($this->session) && ($this->session != null) && ($this->session->userdata('logged_in') == TRUE)):?>
+					</a> <a class="brand" href="../pages/home"><?php echo $this->session->userdata('companyname');?> CRM</a>
+				<?php else:?>
+					</a> <a class="brand" href="../pages/home">Category Management CRM</a>
+				<?php endif;?>
 				<div class="nav-collapse">
 					<ul class="nav pull-right">
 					

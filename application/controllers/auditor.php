@@ -1,6 +1,6 @@
 <?php
 
-class Auditor extends CI_Controller {
+class Auditor extends MY_Controller {
 	
 	//extract this from a configuration file
 	var $company_id =1;
