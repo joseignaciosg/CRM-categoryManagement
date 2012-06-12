@@ -43,7 +43,7 @@ class Clickviewer extends MY_Controller {
 		
 		// load the HTML Table Class
 		$this->load->library('table');
-		$this->table->set_heading('Nombre', 'E-Mail', 'Fecha','Newsletter','Campaña','Compañía');
+		$this->table->set_heading('Nombre', 'E-Mail', 'Fecha','Newsletter','Campaña');
 		$tmpl = array (
 		                    'table_open'          => '<table class="table table-striped">',
 		                    'heading_row_start'   => '<thead><tr>',

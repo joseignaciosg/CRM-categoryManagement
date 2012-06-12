@@ -48,7 +48,7 @@ class Clickservice_model extends CI_Model {
 	
 	function get_openings( $offset, $limit){
 		$company = $this->session->userdata('company_id');
-		$sqltxt = "SELECT user, mail, DATE, name, campaign, companies.nombre
+		$sqltxt = "SELECT user, mail, DATE, name, campaign
 									FROM image_click, newsletters, companies
 									WHERE image_click.newsletter = newsletters.newsletter_id
 									AND image_click.company = companies.id

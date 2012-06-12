@@ -13,7 +13,7 @@
 	<li>Presione "Entrar"</li>
 	<li>Si las credenciales fueron correctamente insertadas , el sistema le
 		informará que se ha logueado correctamente.</li>
-	<li>Una vez logeado, el formulario de logueo será reemplazado por un
+	<li>Una vez logueado, el formulario de logueo será reemplazado por un
 		botón con su nombre de usuario, haga click sobre él para ver las
 		opciones con la que cuenta.</li>
 	<li>Desde el menu mencionado en el paso anterior podrá acceder al
