@@ -20,7 +20,7 @@ class Pages extends MY_Controller {
 			show_404();
 		}
 		
-		$data['title'] = ucfirst($page); // Capitalize the first letter
+		$data['title'] = "Home"; 
 		$data['user_username'] = null;
 		
 		

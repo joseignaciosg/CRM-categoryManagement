@@ -21,6 +21,9 @@ class UserService_model extends CI_Model{
 		return $this->db->query($query, array($username,$password));
 	}
 	
-	
+	function change_password($company, $newpassword){
+		$query = "update users set password = ? where id = ?";
+		return $this->db->query($query, array($newpassword,$company));
+	}
 	
 }

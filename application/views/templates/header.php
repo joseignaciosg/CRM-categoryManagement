@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title><?=$title?></title>
+<?php if( is_null($title) ):?>
+	<title>Home</title>
+<?php else:?>
+	<title><?=$title?></title>
+<?php endif;?>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -48,9 +54,11 @@ body {
 									<li><a href="../user/viewer"> Visor de Clicks</a>
 									</li>
 <!-- 									<li><a href="http://www.categorymg.com/CM-auditor/" target="_blank" > Auditor </a> -->
-										<li><a href="../auditor/front" > Auditor </a>
+<!-- 										<li><a href="../auditor/front" > Auditor </a> -->
 									
-									</li>
+<!-- 									</li> -->
+									<li><a href="../user/panel"> Administrar cuenta</a></li>
+
 									<li><a href="../user/logout"> Salir </a>
 									</li>
 								</ul>

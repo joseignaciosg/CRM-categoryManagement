@@ -49,6 +49,7 @@ class User extends MY_Controller {
 		$this->session->set_userdata('logged_in', FALSE);
 		$this->simplelogin->logout();
 		$this->session->sess_destroy();
+		$data['title'] = "Home";
 		$data['info'] = 'Se ha deslogueado correctamente';
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/home', $data);
@@ -61,7 +62,61 @@ class User extends MY_Controller {
 		redirect('/clickviewer/openings');
 	}
 
+  	public function panel($page = 'panel'){
+  		if ( ! file_exists('application/views/clickviewer/'.$page.'.php')){
+  			show_404();
+  		}
+  		$data['title'] = ucfirst($page);
+  		$data['page'] = $page;
+  		$this->load->view('templates/header', $data);
+  		$this->load->view('user/panel', $data);
+  		$this->load->view('templates/footer', $data);
+  	}
+  	
+  	public function changepassform($page ="changepassform"){
+  		$data['title'] = ucfirst($page);
+  		$data['page'] = $page;
+  		$this->load->view('templates/header', $data);
+  		$this->load->view('user/changepass', $data);
+  		$this->load->view('templates/footer', $data);
+  		
+  	}
 	
+  	public function changepass($page ="changepass"){
+  		$username = $this->session->userdata('username');
+  		$realoldpassword = $this->session->userdata('password');
+  		$oldpassword = $this->input->post('old_pass');
+  		$newpassword = $this->input->post('new_pass');
+  		$newpasswordagain=  $this->input->post('new_pass2');
+  		$company = $this->session->userdata('company_id');
+  		
+  		$data['page'] = $page;
+  		$data['title'] = $page;
+  		if ($newpassword != $newpasswordagain){
+  			$data['errors'] = 'Las contraseñas no coinciden';
+  		}else if($realoldpassword != $oldpassword ){
+  			$data['errors'] = 'Las vieja contraseña es incorrecta';
+  		}else {
+  			$results = $this->userservice_model->change_password($company, $newpassword);
+  			$data['info'] = 'Su contraseña ha sido cambiada exitosamente.';
+  		}
+  		$this->load->view('templates/header', $data);
+  		$this->load->view('user/changepass', $data);
+  		$this->load->view('templates/footer', $data);
+  	}
+  	
+  	public function seedata($page ="seedata"){
+  		$username = $this->session->userdata('username');
+  		$password = $this->session->userdata('password');
+  		$data['results'] = $this->userservice_model->get_user($username, $password);
+  		$data['title'] = ucfirst($page);
+  		$data['page'] = $page;
+  		$this->load->view('templates/header', $data);
+  		$this->load->view('user/seedata', $data);
+  		$this->load->view('templates/footer', $data);
+  	
+  	}
+  	
 }
 
 ?>

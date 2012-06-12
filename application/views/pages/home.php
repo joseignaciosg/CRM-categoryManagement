@@ -31,32 +31,32 @@
 </div>
 
 <!-- Example row of columns -->
-<div class="row">
-	<div class="span4">
-		<h2>Site</h2>
-		<p align="justify">Sitio web de la empresa. Category Management Inc
-			desarrolla desde hace más de 10 años su actividad para los países de
-			habla hispana.</p>
-		<p>
-			<a class="btn" href="http://www.categorymg.com" target="_blank">Ir
-				&raquo;</a>
-		</p>
-	</div>
-	<div class="span4">
-		<h2>Blog</h2>
-		<p align="justify">Blog de la empresa. En el marco de un universo
-			minorista que presenta permanentemente novedosos desafíos, se
-			desarrollan una serie de retos que se extienden por un lado, a los
-			fabricantes que utilizan los canales masivos de distribución, y por
-			el otro, a los diferentes perfiles de consumidores. Frente a esto,
-			Category Management Inc. trabaja junto a sus clientes en Consultoría
-			y Capacitación para que potencien sus fortalezas actuales y adquieran
-			nuevas habilidades.</p>
-		<p>
-			<a class="btn" href="http://blogcategorymanagement.com"
-				target="_blank">Ir &raquo;</a>
-		</p>
-	</div>
-</div>
+<!-- <div class="row"> -->
+<!-- 	<div class="span4"> -->
+<!-- 		<h2>Site</h2> -->
+<!-- 		<p align="justify">Sitio web de la empresa. Category Management Inc -->
+<!-- 			desarrolla desde hace más de 10 años su actividad para los países de -->
+<!-- 			habla hispana.</p> -->
+<!-- 		<p> -->
+<!-- 			<a class="btn" href="http://www.categorymg.com" target="_blank">Ir -->
+<!-- 				&raquo;</a> -->
+<!-- 		</p> -->
+<!-- 	</div> -->
+<!-- 	<div class="span4"> -->
+<!-- 		<h2>Blog</h2> -->
+<!-- 		<p align="justify">Blog de la empresa. En el marco de un universo -->
+<!-- 			minorista que presenta permanentemente novedosos desafíos, se -->
+<!-- 			desarrollan una serie de retos que se extienden por un lado, a los -->
+<!-- 			fabricantes que utilizan los canales masivos de distribución, y por -->
+<!-- 			el otro, a los diferentes perfiles de consumidores. Frente a esto, -->
+<!-- 			Category Management Inc. trabaja junto a sus clientes en Consultoría -->
+<!-- 			y Capacitación para que potencien sus fortalezas actuales y adquieran -->
+<!-- 			nuevas habilidades.</p> -->
+<!-- 		<p> -->
+<!-- 			<a class="btn" href="http://blogcategorymanagement.com" -->
+<!-- 				target="_blank">Ir &raquo;</a> -->
+<!-- 		</p> -->
+<!-- 	</div> -->
+<!-- </div> -->
 
 <hr>
